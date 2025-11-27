@@ -27,6 +27,6 @@ Key Themes: Bug testing, Improving code quality, Automation
 2. Libraries: unittest, pytest
    
 ### How to navigate folders
-- Main code can be found in my_function file
-- Unit test code can be found in test_mathfunction file
+- Main code can be found in CollectionManager file
+- Unit test code can be found in Test_CollectionManager file
 
