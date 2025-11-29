@@ -1,3 +1,44 @@
+import unittest
+from unittest import mock
+from CollectionManager import Watch_list
+
+class WatchListTests(unittest.TestCase):
+    @mock.patch('builtins.input', create=True)
+    def test_add_movie(self, mocked_input):
+        # Mock input to return specific values
+        mocked_input.side_effect = ["Lion King", "120", "Action", "Aaron Pierre", "9.0", "Complete"]
+
+        # Create a Watch_list instance
+        watch_list = Watch_list()
+
+        # Pretend add_movie is using input for values instead of direct method arguments
+        watch_list.add_movie(
+            mocked_input(),
+            int(mocked_input()),      
+            mocked_input(),
+            [mocked_input()],         # Actors could be a parsed list
+            float(mocked_input()),    
+            mocked_input()
+        )
+
+        # Validate the movie added against expected details
+        self.assertEqual(len(watch_list.movies_list), 1)
+        movie = watch_list.movies_list[0]
+        self.assertEqual(movie.name, "Lion King")
+        self.assertEqual(movie.length, 120)
+        self.assertEqual(movie.genre, "Action")
+        self.assertEqual(movie.actors, ["Aaron Pierre"])
+        self.assertEqual(movie.ratings, 9.0)
+        self.assertEqual(movie.watch_status, "Complete")
+
+
+if __name__ == '__main__':
+    unittest.main()
+
+
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#Code block: code not using unittest.mock
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 '''import unittest
 from CollectionManager import Watch_list
 from unittest import mock
@@ -25,41 +66,3 @@ class TestWatchList(unittest.TestCase):
 if __name__ == '__main__':
     unittest.main()'''
 
-
-
-import unittest
-from unittest import mock
-from CollectionManager import Watch_list
-
-class WatchListTests(unittest.TestCase):
-    @mock.patch('builtins.input', create=True)
-    def test_add_movie(self, mocked_input):
-        # Mock input to return specific values
-        mocked_input.side_effect = ["Lion King", "120", "Action", "Arron Pierre", "9.0", "Complete"]
-
-        # Create a Watch_list instance
-        watch_list = Watch_list()
-
-        # Pretend add_movie is using input for values instead of direct method arguments
-        watch_list.add_movie(
-            mocked_input(),
-            int(mocked_input()),      
-            mocked_input(),
-            [mocked_input()],         # Actors could be a parsed list
-            float(mocked_input()),    
-            mocked_input()
-        )
-
-        # Validate the movie added against expected details
-        self.assertEqual(len(watch_list.movies_list), 1)
-        movie = watch_list.movies_list[0]
-        self.assertEqual(movie.name, "Inception")
-        self.assertEqual(movie.length, 148)
-        self.assertEqual(movie.genre, "Action")
-        self.assertEqual(movie.actors, ["Leonardo DiCaprio"])
-        self.assertEqual(movie.ratings, 9.0)
-        self.assertEqual(movie.watch_status, "Complete")
-
-
-if __name__ == '__main__':
-    unittest.main()
