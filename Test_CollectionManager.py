@@ -35,7 +35,7 @@ class WatchListTests(unittest.TestCase):
     @mock.patch('builtins.input', create=True)
     def test_add_movie(self, mocked_input):
         # Mock input to return specific values
-        mocked_input.side_effect = ["Inception", "148", "Action", "Leonardo DiCaprio", "9.0", "Complete"]
+        mocked_input.side_effect = ["Lion King", "120", "Action", "Arron Pierre", "9.0", "Complete"]
 
         # Create a Watch_list instance
         watch_list = Watch_list()
