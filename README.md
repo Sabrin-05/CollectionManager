@@ -1,6 +1,8 @@
 # CollectionManager
 Using circle ci to unit test an old movie and series collection manager to ensure all classes and functions are working as expected
 
+WORK IN PROGRESS: Created a unit test for one function, will update the rest in the near future
+
 ## Table of Contents
 1. Overview
 2. Repository Structure
